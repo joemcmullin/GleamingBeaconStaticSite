@@ -1,4 +1,3 @@
-import Beacon from './Beacon'
 import HeroGlow from './HeroGlow'
 import SandParticles from './SandParticles'
 import WaitlistForm from './WaitlistForm'
@@ -15,14 +14,7 @@ export default function Hero() {
 
       <div className="container-x relative z-10">
         <div className="mx-auto max-w-3xl text-center">
-          {/* Hero lockup — mark leads, draws on at load */}
-          <div className="reveal mb-8 flex flex-col items-center">
-            <Beacon
-              priority
-              className="h-44 w-auto drop-shadow-[0_14px_40px_var(--glow-lantern)] sm:h-52"
-            />
-          </div>
-
+          {/* Logo/mark intentionally removed — to be replaced later. Wordmark leads. */}
           <h1 className="reveal mb-4 font-display text-5xl font-semibold leading-[1.02] tracking-tight sm:text-6xl md:text-7xl">
             Gleaming Beacon
             <span className="align-super text-[0.32em] font-body text-accent">™</span>

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import Beacon from './Beacon'
 import ThemeToggle from './ThemeToggle'
 
 const LINKS = [
@@ -44,9 +43,6 @@ export default function Nav() {
       <nav className="border-b border-border/70 bg-bg/70 backdrop-blur-xl">
         <div className="container-x flex h-16 items-center justify-between gap-4">
           <a href="#top" className="magnetic flex items-center gap-2.5" aria-label="Gleaming Beacon — top">
-            <span className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl border border-[#3a3020] bg-[#17130D]">
-              <Beacon priority className="h-7 w-auto" />
-            </span>
             <span className="font-display text-lg font-semibold tracking-wide">
               Gleaming Beacon
             </span>
