@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Light (default) — cool porcelain grey. The faint blue lean keeps the page
+     reading GREY (never parchment/yellow) while the gold sand pops against it. */
+  --bg: #EDEEF1;
+  --bg-alt: #E3E5E9;
+  --surface: #FBFBFC;
+  --surface-hover: #F3F4F6;
+  --ink: #1D1E22;
+  --muted: #5F6169;
+  --border: #D2D4DA;
+  --accent: #A67C2E;
+  --accent-hover: #8A6725;
+  --accent-soft: #EFE6D2;
+  --accent-ink: #7F5D1F; /* darker gold for SMALL text on the grey ground (AA ≥4.5:1) */
+
+  /* Glow tuning (light) — restrained, so the warm cast never yellows the page */
+  --glow-core: 0.22;
+  --glow-strong: rgba(166, 124, 46, 0.18);
+  --glow-mid: rgba(201, 168, 95, 0.08);
+  --glow-lantern: rgba(166, 124, 46, 0.30);
+  --ray-opacity: 0.14;
+
+  color-scheme: light;
+}
+
+.dark {
+  /* Dark — warm desert night; the lantern glows like a lamp in the dunes */
+  --bg: #16120C;
+  --bg-alt: #1E1912;
+  --surface: #241E15;
+  --surface-hover: #2C251A;
+  --ink: #F0E7D5;
+  --muted: #A89A82;
+  --border: #382F20;
+  --accent: #D8B45E;
+  --accent-hover: #E6C878;
+  --accent-soft: rgba(216, 180, 94, 0.14);
+  --accent-ink: #D8B45E; /* bright gold already passes on the dark ground */
+
+  --glow-core: 0.5;
+  --glow-strong: rgba(216, 180, 94, 0.42);
+  --glow-mid: rgba(216, 180, 94, 0.12);
+  --glow-lantern: rgba(216, 180, 94, 0.48);
+  --ray-opacity: 0.28;
+
+  color-scheme: dark;
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: 'Jost', system-ui, sans-serif;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background-color 400ms ease, color 400ms ease;
+}
+
+/* Global film-grain noise overlay — kills flat digital gradients */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--ink);
+}
+
+::-webkit-scrollbar { width: 9px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+/* Focus visibility — accessible keyboard states */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@layer components {
+  .container-x {
+    max-width: 1120px;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+  }
+  .gold-text {
+    background: linear-gradient(120deg, var(--accent) 0%, var(--accent-hover) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .magnetic {
+    transition: transform 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      background-color 300ms ease, color 300ms ease, box-shadow 300ms ease,
+      border-color 300ms ease;
+  }
+  .magnetic:hover {
+    transform: scale(1.03);
+  }
+}
+
+/* Reveal-on-scroll. The hidden state is gated behind html.js so that WITHOUT
+   JavaScript (static render, social scraper, no-JS) the resting state is fully
+   visible — the animation only ever reveals *from* hidden, never hides. */
+.reveal {
+  opacity: 1;
+  transform: none;
+}
+html.js .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+html.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Lantern glow pulse */
+@keyframes glow-breathe {
+  0%, 100% { opacity: 0.85; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+.glow-breathe {
+  animation: glow-breathe 7s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Slow ray rotation behind the hero mark */
+@keyframes ray-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.ray-spin {
+  animation: ray-spin 90s linear infinite;
+  transform-origin: center;
+}
+
+/* Draw-on for the lantern body stroke */
+@keyframes draw-on {
+  from { stroke-dashoffset: 100; }
+  to { stroke-dashoffset: 0; }
+}
+
+/* REDUCED MOTION — everything resolves to its visible resting state */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .glow-breathe, .ray-spin { animation: none !important; }
+  *[data-draw] { stroke-dashoffset: 0 !important; animation: none !important; }
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
