@@ -1,4 +1,4 @@
-import Lantern from './Lantern'
+import Beacon from './Beacon'
 import ThemeToggle from './ThemeToggle'
 
 export default function Footer() {
@@ -6,8 +6,8 @@ export default function Footer() {
     <footer className="rounded-t-[2.5rem] border-t border-border bg-bg-alt px-6 pb-12 pt-16">
       <div className="container-x">
         <div className="flex flex-col items-center text-center">
-          <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl border border-border bg-surface">
-            <Lantern uid="footer" className="h-8 w-auto" />
+          <span className="mb-4 flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl border border-[#3a3020] bg-[#17130D]">
+            <Beacon className="h-11 w-auto" />
           </span>
           <p className="mb-1 font-display text-2xl font-semibold tracking-wide">
             Gleaming Beacon<span className="align-super text-sm text-accent">™</span>

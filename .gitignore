@@ -5,3 +5,6 @@ dist/
 *.log
 .server.log
 .DS_Store
+
+# design source files (originals, cutouts, review renders)
+assets-src/

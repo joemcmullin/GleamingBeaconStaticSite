@@ -145,7 +145,7 @@ html.js .reveal.is-visible {
   transform: none;
 }
 
-/* Lantern glow pulse */
+/* Beacon glow pulse */
 @keyframes glow-breathe {
   0%, 100% { opacity: 0.85; transform: scale(1); }
   50% { opacity: 1; transform: scale(1.04); }

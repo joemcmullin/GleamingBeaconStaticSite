@@ -1,4 +1,4 @@
-import Lantern from './Lantern'
+import Beacon from './Beacon'
 import HeroGlow from './HeroGlow'
 import SandParticles from './SandParticles'
 import WaitlistForm from './WaitlistForm'
@@ -17,11 +17,9 @@ export default function Hero() {
         <div className="mx-auto max-w-3xl text-center">
           {/* Hero lockup — mark leads, draws on at load */}
           <div className="reveal mb-8 flex flex-col items-center">
-            <Lantern
-              uid="hero"
-              drawOn
-              title="Gleaming Beacon lantern mark"
-              className="h-28 w-auto drop-shadow-[0_10px_30px_var(--glow-lantern)]"
+            <Beacon
+              priority
+              className="h-44 w-auto drop-shadow-[0_14px_40px_var(--glow-lantern)] sm:h-52"
             />
           </div>
 

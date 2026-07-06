@@ -1,4 +1,4 @@
-import Lantern from './Lantern'
+import Beacon from './Beacon'
 import SandParticles from './SandParticles'
 import WaitlistForm from './WaitlistForm'
 import StoreBadges from './StoreBadges'
@@ -18,7 +18,7 @@ export default function WaitlistCTA() {
       <SandParticles density={1.1} className="pointer-events-none absolute inset-0 z-[1]" />
       <div className="container-x relative z-10">
         <div className="mx-auto max-w-2xl text-center">
-          <Lantern uid="cta" className="mx-auto mb-7 h-16 w-auto glow-breathe" />
+          <Beacon className="mx-auto mb-7 h-24 w-auto glow-breathe" />
           <p className="reveal eyebrow mb-4">Be first to know</p>
           <h2 className="reveal mb-5 font-display text-4xl font-semibold leading-tight sm:text-5xl">
             Join the waitlist
