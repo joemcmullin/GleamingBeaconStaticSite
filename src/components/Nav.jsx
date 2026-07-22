@@ -1,11 +1,17 @@
 import { useEffect, useState } from 'react'
 import ThemeToggle from './ThemeToggle'
+import { Link } from '../router'
 
-const LINKS = [
+const SECTION_LINKS = [
   { href: '#what', label: 'What it is' },
   { href: '#modules', label: 'Modules' },
   { href: '#how', label: 'How it works' },
-  { href: '#privacy', label: 'Privacy' },
+]
+
+const PAGE_LINKS = [
+  { to: '/privacy', label: 'Privacy' },
+  { to: '/terms', label: 'Terms' },
+  { to: '/support', label: 'Support' },
 ]
 
 // Reveal-on-scroll chrome: the navbar stays hidden while the hero is in view
@@ -48,8 +54,8 @@ export default function Nav() {
             </span>
           </a>
 
-          <div className="hidden items-center gap-7 md:flex">
-            {LINKS.map((l) => (
+          <div className="hidden items-center gap-6 md:flex">
+            {SECTION_LINKS.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
@@ -57,6 +63,16 @@ export default function Nav() {
               >
                 {l.label}
               </a>
+            ))}
+            <span className="h-4 w-px bg-border" aria-hidden="true" />
+            {PAGE_LINKS.map((l) => (
+              <Link
+                key={l.to}
+                to={l.to}
+                className="magnetic font-body text-sm text-muted hover:text-ink"
+              >
+                {l.label}
+              </Link>
             ))}
           </div>
 
