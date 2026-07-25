@@ -12,7 +12,7 @@ import { ArrowRight, Check, Loader2 } from 'lucide-react'
 //   domains (POSTs from non-allow-listed origins are silently rejected).
 const FERNAND_APP_ID = 'journey-tracker'
 const FERNAND_ENDPOINT = 'https://api.getfernand.com/messenger/contact'
-const FORM_SUBJECT = 'Gleaming Beacon waitlist signup'
+const FORM_SUBJECT = '[Gleaming Beacon] Waitlist signup'
 
 export default function WaitlistForm({ id = 'waitlist', size = 'md' }) {
   const [name, setName] = useState('')
