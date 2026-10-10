@@ -74,6 +74,14 @@ export default function Footer() {
           <p className="text-center font-mono text-[11px] tracking-wide text-muted">
             © {new Date().getFullYear()} Gleaming Beacon. All rights reserved.
           </p>
+          <p className="text-center font-mono text-[11px] tracking-wide text-muted">
+            <a
+              href="https://apexdevelopmentstudio.com/"
+              className="underline-offset-4 hover:text-ink hover:underline"
+            >
+              Built by Apex Development Studio
+            </a>
+          </p>
         </div>
       </div>
     </footer>
